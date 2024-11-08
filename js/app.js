@@ -3235,9 +3235,11 @@
     }
     const da = new DynamicAdapt("max");
     da.init();
-    const preloader = document.querySelector(".preloader");
     window.addEventListener("load", (function() {
-        preloader.classList.add("loaded");
+        setTimeout((function() {
+            const preloader = document.querySelector(".preloader");
+            if (!preloader.classList.contains("loaded")) preloader.classList.add("loaded");
+        }), 5e3);
     }));
     const headerColor = document.querySelector(".header");
     const activeHeader = function() {
